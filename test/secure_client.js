@@ -163,6 +163,7 @@ describe('MqttSecureClient', function () {
         server.setupConnection(tlsSocket)
       })
 
+
       hostname = 'localhost'
       client = mqtt.connect({
         protocol: 'mqtts',
@@ -171,7 +172,7 @@ describe('MqttSecureClient', function () {
         rejectUnauthorized: true,
         host: hostname
       })
-
+      
       client.on('error', function (err) {
         done(err)
       })
