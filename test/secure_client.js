@@ -127,7 +127,8 @@ describe('MqttSecureClient', function () {
       })
     })
 
-    it('should validate unsuccessfully the CA', function (done) {
+    it.only('should validate unsuccessfully the CA', function (done) {
+      this.timeout(1000);
       var client = mqtt.connect({
         protocol: 'mqtts',
         port: port,
@@ -142,7 +143,7 @@ describe('MqttSecureClient', function () {
       })
     })
 
-    it('should emit close on TLS error', function (done) {
+    it.only('should emit close on TLS error', function (done) {
       var client = mqtt.connect({
         protocol: 'mqtts',
         port: port,
@@ -152,7 +153,6 @@ describe('MqttSecureClient', function () {
 
       client.on('error', function () {})
 
-      // TODO node v0.8.x emits multiple close events
       client.once('close', function () {
         done()
       })
